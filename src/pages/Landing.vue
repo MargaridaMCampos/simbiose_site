@@ -80,6 +80,8 @@
 
 <script>
 import axios from 'axios';
+const { PrismaClient } = require('@prisma/client')
+
 
 export default {
   data() {
@@ -93,6 +95,10 @@ export default {
   },
 
   methods: {
+
+    initPrismaClient() {
+      this.prisma = new PrismaClient();
+    },
 
     changeIdentity(identityType) {
       this.identityType = identityType
@@ -109,27 +115,26 @@ export default {
 
       myForm.value.validate().then(success => {
         if (success) {
-
-
-          const test = { identityType: this.identityType, name: this.name, email: this.email, mobile: this.mobile, description: this.description };
-
           debugger;
-          axios.get('https://httpbin.org/get')
-            .then(function (response) {
-              // handle success
-              console.log(response);
-            })
-            .catch(function (error) {
-              // handle error
-              console.log(error);
-            })
-            .then(function () {
-              // always executed
-            });
+
+          this.prisma.contacts.create({
+            data: {
+              identityType: this.identityType,
+              name: this.name,
+              email: this.email,
+              mobile: this.mobile,
+              description: this.description,
+              date: new Date()
+            }
+          })
         }
       })
 
 
+    },
+
+    beforeMount() {
+      this.initPrismaClient();
     },
 
     onReset() {
