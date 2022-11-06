@@ -1,5 +1,25 @@
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+    provider = "mysql"
+    url      = env("DATABASE_URL")
 }
 
+generator client {
+    provider = "prisma-client-js"
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model DumbassTable {
+    name String? @db.VarChar(100)
+
+    @@ignore
+}
+
+model Contacts {
+    id        Int      @id @default(autoincrement())
+    name      String   @db.VarChar(100)
+    user_type Int
+    email     String   @db.VarChar(100)
+    phone     String?  @db.VarChar(100)
+    text      String?  @db.VarChar(100)
+    date      DateTime @db.DateTime(0)
+}
