@@ -1,0 +1,25 @@
+version: 0.2
+env:
+  git-credential-helper: yes
+phases:
+  install:
+    commands:
+      - npm i npm@latest -g
+      - pip install --upgrade pip
+      - pip install --upgrade awscli
+      - npm i -g @quasar/cli
+      - npm install
+  pre_build:
+    commands:
+      - echo Pre_build Phase
+  build:
+    commands:
+      - echo Build Phase
+      - export >> .env.$MODE
+      - export >> .env
+      - node -e 'console.log(process.env)'
+      - quasar build
+  post_build:
+    commands:
+      - echo PostBuild Phase
+      - aws s3 sync ./dist/spa s3://simbiose-website/site
