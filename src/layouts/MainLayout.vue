@@ -14,7 +14,7 @@
 
     
     <q-page-container style="padding-left: 200px; padding-top: 120px">
-
+      <router-view />
     </q-page-container>
   </q-layout>
 </template>
