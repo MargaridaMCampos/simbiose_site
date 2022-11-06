@@ -68,7 +68,7 @@
         <q-input filled type="textarea" v-model="description" label="Nota" hint="Nota" />
 
         <div>
-          <q-btn label="Submit" type="submit" color="primary" />
+          <q-btn @click. label="Submit" type="submit" color="primary" />
           <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
         </div>
       </q-form>
@@ -80,6 +80,11 @@
 
 <script>
 import axios from 'axios';
+import Vue from 'vue'
+import VueCompositionAPI from '@vue/composition-api'
+
+Vue.use(VueCompositionAPI)
+import {ref} from '@vue/composition-api'
 
 export default {
   data() {
@@ -105,30 +110,28 @@ export default {
     },
 
     onSubmit() {
-      const myForm = ref(null)
-
-      myForm.value.validate().then(success => {
-        if (success) {
-
-
-          const test = { identityType: this.identityType, name: this.name, email: this.email, mobile: this.mobile, description: this.description };
-
-          debugger;
-          axios.get('https://httpbin.org/get')
-            .then(function (response) {
-              // handle success
-              console.log(response);
+      
+      console.log({
+            "name": this.name ,
+            "user_type": this.identityType,
+            "email": this.email,
+            "phone": this.mobile,
+            "text": this.description,
+            "date": "2022-12-01"
             })
-            .catch(function (error) {
-              // handle error
-              console.log(error);
-            })
-            .then(function () {
-              // always executed
-            });
-        }
-      })
 
+      axios.post('https://yuzmuq9mdf.execute-api.us-east-2.amazonaws.com/live/lead',
+          {
+            "name": this.name ,
+            "user_type": this.identityType,
+            "email": this.email,
+            "phone": this.mobile,
+            "text": this.description,
+            "date": "2022-12-01"
+            },
+           {headers: {
+            Authorization: "AWS4-HMAC-SHA256 Credential=AKIAUNP3GDVEU23K7757/20221106/us-east-2/execute-api/aws4_request, SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=35798e466357cfdc06294b342498215238be5f6592a0909695dba6a1d8930545"
+           }})
 
     },
 
