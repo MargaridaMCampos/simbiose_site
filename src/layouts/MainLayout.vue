@@ -1,19 +1,8 @@
 <template>
-  <q-layout view="hHh lpR fff">
-    <q-header elevated class="bg-white text-black">
-      <q-toolbar >
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="../assets/logo.png" />
-          </q-avatar>
-          Simbiose
-        </q-toolbar-title>
-      </q-toolbar>
-      
-    </q-header>
+  <q-layout view="hHh lpR fFf">
 
+    <q-page-container>
     
-    <q-page-container style="padding-left: 200px; padding-top: 120px">
       <router-view />
     </q-page-container>
   </q-layout>
