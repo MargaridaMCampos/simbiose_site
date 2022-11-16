@@ -1,87 +1,80 @@
 <template>
-  <q-page>
-    <q-banner style="background-color: #0B5351;">
-      <div class = "text-h2 col q-pa-lg text-center items-center" style = "color:white; font-family:  ;">
-        <q-img src= "../assets/simbiose_logo_white.png" style="width: 1em;"/>
+  <q-page style="background-color: white;">
+    <q-banner inline-actions style="background-color: white;">
+      <div class = "text-h2 q-pa-lg" style = "color:#0B5351;">
+        <q-img src= "../assets/simbiose_logo_color.png" style="width: 1em;"/>
       Simbiose
-    </div>
-    <template v-slot:action>
-      <q-btn href="https://www.instagram.com/invites/contact/?i=3xpcvn7fpgl2&utm_content=pxeetrq" target="_blank" round class="q-pa-md q-ma-sm">
-        <q-img src="../assets/instagram.png">
-        </q-img>
-      </q-btn>
-      <q-btn href="https://www.linkedin.com/company/associa%C3%A7%C3%A3o-simbiose/" target="_blank" round class="q-pa-md q-ma-sm">
-        <q-img src="../assets/linkedin.png">
-        </q-img>
-      </q-btn>
-    </template>
-      </q-banner>
-    <div class="row q-pa-lg">
-      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-        <div class = "text-h6 q-pa-md" style="color:#0B5351"> ldsflkdsajflk; jdsaf dsfnldskaflkdsn fkdsfh ;jdsf
-          dsfdsalkfjdsalkjgdaanflidsagkjndsknfd dsjfjdsflj ds
-          dfdskjfka jhljdsfdsa jnldijsa f
-          ldsa kjfdslkfh jsa lk lkjlk jlkasdflk j
-          dsanflk dslkf l ;lkdsalkvdsalknldsa k ndsakf dsalkjf lkdsj f dsfds
-          dsafjhdsalkhfdh fj dsa
-          dsf dskjdsflkj gfdshgfdsgidsagn s kjdsa flds dsf ;jdsgf fg jf
-          lkgfdsakgia gdsa id fdsa nf jdsf kndsf usgfis ibf siud
-          dsfodsa foosd lnf odsn fondsfo sdfdsa nifand nai langldsa kkds nfiku 
+      </div>
+    </q-banner>
+    <div class="row q-pa-lg justify-around">
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+        <div class = "text-h4 q-pa-md" style="color:gray"> 
+          a construir uma comunidade digital de entreajuda em Portugal.
         </div>
-
+        <div class="text-h5 q-pa-md" style="color:gray">
+          &#183;  centralizar iniciativas<br/> 
+          &#183;  dar visibilidade às associações<br/>
+          &#183;  alargar espectro de apoios<br/>
+        </div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-md">
-        <q-img src="../assets/illustrations/undraw_collaborators_re_hont.svg">
-        </q-img>
+          <q-img src="../assets/doodles.gif">
+          </q-img>
       </div>
     </div>
 
+    <div class="q-pa-xl q-gutter-xl q-ma-lg fit row  justify-center">
+      <q-btn @click="goto('association')" size="lg" label="Associações" no-caps rounded style="background-color:#0B5351; color: white;"></q-btn>
+      <q-btn @click="goto('individual')" size="lg" label="Indivíduos" no-caps rounded style="background-color:#0B5351; color: white;"></q-btn>
+      <q-btn @click="goto('company')" size="lg" label="Empresas" no-caps rounded style="background-color:#0B5351; color: white;"></q-btn>
+    </div>
 
-    <div class="row q-mx-lg">
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 q-pa-md">
+    <div class = "row q-pa-lg justify-between" ref="association" style="background-color:#F8F8F8;">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-md q-mx-xl">
+        <q-img src="../assets/illustrations/team.svg"></q-img>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-md q-mx-xl">
         <q-card>
-          <q-card-section class="bg text-white" style="background-color:#0B5351">
-            <div class="text-h6 text-center">
-              Empresas
+          <q-card-section>
+            <div class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus mollis dui, ac euismod urna dapibus sed. Maecenas non tempor dui, quis auctor mauris. In quis sem in elit accumsan malesuada. Pellentesque dignissim tellus odio, nec commodo ligula pulvinar non. Donec sollicitudin orci in odio tristique, vitae rutrum est faucibus. Phasellus dignissim id odio nec rhoncus. Phasellus consequat arcu quis erat accumsan ultricies. Sed nec consequat mauris. Curabitur eu venenatis velit. Nullam nec pellentesque magna. Sed eget sagittis lorem, non pharetra eros. Integer ornare felis id faucibus venenatis.
             </div>
           </q-card-section>
-          <q-card-section class="q-pa-lg">
-            <div class="text-subtitle1 text-center">
-              Text
-            </div>
-          </q-card-section>
-
-          <q-card-actions align="center">
-            <q-btn rounded outline :color="identityType == 0 ? 'primary' : 'standard'"
-              @click="() => { changeIdentity(0) }">
-                  Sou uma empresa
-            </q-btn>
-          </q-card-actions>
-        </q-card> 
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 q-pa-md">
-        <q-card class="q-pa-md">
-          <q-card-actions align="center">
-            <q-btn rounded outline style="" :color="identityType == 1 ? 'primary' : 'standard'"
-              @click="() => { changeIdentity(1) }">
-                  Sou um voluntário
-            </q-btn>
-          </q-card-actions>
-        </q-card> 
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 q-pa-md">
-        <q-card class="q-pa-md">
-          <q-card-actions align="center">
-            <q-btn rounded outline :color="identityType == 2 ? 'primary' : 'standard'"
-              @click="() => { changeIdentity(2) }">
-                  Sou uma associação
-            </q-btn>
-          </q-card-actions>
-        </q-card> 
+        </q-card>
       </div>
     </div>
-    <q-dialog v-model="popForm">
-    
+
+    <div class = "row q-pa-lg justify-between" ref="individual">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-md q-mx-xl">
+        <q-img src="../assets/illustrations/undraw_collaborators_re_hont.svg"></q-img>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-md">
+        <q-card>
+          <q-card-section>
+            <div class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus mollis dui, ac euismod urna dapibus sed. Maecenas non tempor dui, quis auctor mauris. In quis sem in elit accumsan malesuada. Pellentesque dignissim tellus odio, nec commodo ligula pulvinar non. Donec sollicitudin orci in odio tristique, vitae rutrum est faucibus. Phasellus dignissim id odio nec rhoncus. Phasellus consequat arcu quis erat accumsan ultricies. Sed nec consequat mauris. Curabitur eu venenatis velit. Nullam nec pellentesque magna. Sed eget sagittis lorem, non pharetra eros. Integer ornare felis id faucibus venenatis.
+            </div>
+          </q-card-section>
+        </q-card>
+      </div>
+    </div>
+
+    <div class = "row q-pa-lg justify-between" ref="company" style="background-color:#F8F8F8;">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-md q-mx-xl">
+        <q-img src="../assets/illustrations/team.svg"></q-img>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-md q-mx-xl">
+        <q-card>
+          <q-card-section>
+            <div class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus mollis dui, ac euismod urna dapibus sed. Maecenas non tempor dui, quis auctor mauris. In quis sem in elit accumsan malesuada. Pellentesque dignissim tellus odio, nec commodo ligula pulvinar non. Donec sollicitudin orci in odio tristique, vitae rutrum est faucibus. Phasellus dignissim id odio nec rhoncus. Phasellus consequat arcu quis erat accumsan ultricies. Sed nec consequat mauris. Curabitur eu venenatis velit. Nullam nec pellentesque magna. Sed eget sagittis lorem, non pharetra eros. Integer ornare felis id faucibus venenatis.
+            </div>
+          </q-card-section>
+        </q-card>
+      </div>
+    </div>
+
+    <q-dialog v-model="popForm"> 
     <div v-if="identityType!==null" class="row justify-center">
       <q-card class="q-pa-lg">
         <q-form id="form" @submit="onSubmit" @reset="onReset" ref="myForm" class="q-gutter-md">
@@ -96,15 +89,40 @@
           <q-input filled type="textarea" v-model="description" label="Nota" hint="Nota" />
 
           <div>
-            <q-btn @click. label="Submit" type="submit" color="primary" />
-            <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+            <q-btn @click. label="Submit" type="submit"  style="background-color:#0B5351; color: white;" />
+            <q-btn label="Reset" type="reset"  style="color:#0B5351" flat class="q-ml-sm" />
           </div>
         </q-form>
 
       </q-card>
     </div>
   </q-dialog>
-  </q-page>
+  <q-dialog auto-close v-model="thankYou"> 
+    <q-card class="q-pa-xl">
+      <q-card-section>
+        <q-img src="../assets/illustrations/thanks.svg">
+        </q-img>
+      </q-card-section>
+      <q-card-section>
+        <div class="text-h3" style="color:gray">
+          Obrigado!
+        </div>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
+
+<!--   <div class="row q-mx-lg">
+      <div v-for="card in infoCards" :key="card.id" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 q-pa-md">
+        <info-card
+          v-bind:id="card.id"
+          v-bind:title-name="card.titleName"
+          v-bind:bullets="card.bullets"
+          v-bind:button-text="card.buttonText"
+          @selected="(i)=> changeIdentity(i)">
+        </info-card>
+      </div>
+  </div> -->
+    </q-page>
 </template>
 
 <script>
@@ -114,8 +132,12 @@ import VueCompositionAPI from '@vue/composition-api'
 
 Vue.use(VueCompositionAPI)
 import {ref} from '@vue/composition-api'
+/* import InfoCard from "../components/InfoCard.vue"
+ */
 
 export default {
+
+
   data() {
     return {
       identityType: null,
@@ -124,10 +146,36 @@ export default {
       mobile: null,
       description: null,
       popForm:false,
+      thankYou:false,
+      infoCards: [{id:0,
+                    titleName:'Sou uma Associação',
+                    bullets: [{id:0, text: 'Ah e tal'},
+                              {id:1, text: 'e mais e mais'},
+                              {id:2, text: 'e tal e coiso'}],
+                    buttonText:'Juntar!'
+                    },
+                   {id:1,
+                    titleName:'Sou uma Empresa',
+                    bullets: [{id:0, text: 'Ah e tal'},
+                              {id:1, text: 'e mais e mais'},
+                              {id:2, text: 'e tal e coiso'}],
+                    buttonText:'Apoiar!'},
+                   {id:2,
+                    titleName:'Sou um Indivíduo',
+                    bullets: [{id:0, text: 'Ah e tal'},
+                              {id:1, text: 'e mais e mais'},
+                              {id:2, text: 'e tal e coiso'}],
+                    buttonText:'Aliar!'}]
     }
   },
 
   methods: {
+
+    goto(refName) {
+        var element = this.$refs[refName];
+        var top = element.offsetTop;
+        window.scrollTo(0, top);
+    },
 
     changeIdentity(identityType) {
       this.identityType = identityType
@@ -142,7 +190,7 @@ export default {
 
     onSubmit() {
 
-      axios.post('https://yuzmuq9mdf.execute-api.us-east-2.amazonaws.com/live/lead',
+      /* axios.post('https://yuzmuq9mdf.execute-api.us-east-2.amazonaws.com/live/lead',
           {
             "name": this.name ,
             "user_type": this.identityType,
@@ -153,15 +201,11 @@ export default {
             },
            {headers: {
             Authorization: "AWS4-HMAC-SHA256 Credential=AKIAUNP3GDVEU23K7757/20221106/us-east-2/execute-api/aws4_request, SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=35798e466357cfdc06294b342498215238be5f6592a0909695dba6a1d8930545"
-           }}).then((res) => {
-            res;
-            this.popForm=false
-            this.onReset()
-            $q.notify({
-              message: 'Jim pinged you.',
-              color: 'purple'
-            })
-           })
+           }}) */
+      this.popForm=false
+      this.onReset()
+      this.thankYou=true
+      
 
     },
 
